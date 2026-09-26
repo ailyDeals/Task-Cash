@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="monetag" content="08dfa70688603c36aca8faa4cc5a672e">
-  <meta name="monetag" content="bf9c63f4ad9d5b8cbd6fd945a22972cf">
   <meta name="monetag" content="4841dcb1e9fc851b0f864d9b4627da04">
   <meta name="d353571a67f38e5f65ee049229c45f0a517c2b67" content="d353571a67f38e5f65ee049229c45f0a517c2b67" />
   <title>Task Cash Pro</title>
@@ -107,7 +106,7 @@
           <input type="text" id="reg-refer" placeholder="যেমন: TC9901" class="w-full bg-slate-950 border border-slate-700 rounded-xl py-2.5 px-3 text-xs text-amber-300 uppercase font-mono placeholder-slate-500 focus:outline-none focus:border-emerald-500">
         </div>
         <button type="submit" id="reg-submit-btn" class="w-full py-3 bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 text-white font-bold rounded-xl text-xs shadow-lg active:scale-95 transition-all flex items-center justify-center gap-2">
-          <span>রেজিস্ট্রেশন করুন (ওয়েলকাম বোনাস)</span>
+          <span id="reg-welcome-label">রেজিস্ট্রেশন করুন (ওয়েলকাম বোনাস)</span>
           <i data-lucide="check-circle" class="w-4 h-4"></i>
         </button>
       </form>
@@ -351,6 +350,7 @@
               </div>
               <span class="text-[10px] font-black text-slate-800 dark:text-white text-center leading-tight">স্ক্র্যাচ</span>
               <span id="scratch-count" class="text-[9px] text-purple-600 dark:text-purple-400 font-bold">৫০ টি</span>
+              <span id="scratch-card-sub" class="text-[9px] text-slate-400 font-bold">+২২ কয়েন ফিক্সড</span>
             </button>
             <button onclick="openQuizModal()" class="card-touch-feedback bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-2.5 flex flex-col items-center gap-1.5 shadow-sm hover:border-rose-400/60 transition-all">
               <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-rose-500 to-orange-500 text-white flex items-center justify-center shadow-sm">
@@ -358,6 +358,7 @@
               </div>
               <span class="text-[10px] font-black text-slate-800 dark:text-white text-center leading-tight">ম্যাথ কুইজ</span>
               <span id="quiz-count" class="text-[9px] text-rose-600 dark:text-rose-400 font-bold">১৫ টি</span>
+              <span id="quiz-card-sub" class="text-[9px] text-slate-400 font-bold">+১৫ কয়েন সহজে</span>
             </button>
             <button onclick="openCaptchaModal()" class="card-touch-feedback bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-2.5 flex flex-col items-center gap-1.5 shadow-sm hover:border-cyan-400/60 transition-all">
               <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-500 to-teal-500 text-white flex items-center justify-center shadow-sm">
@@ -365,6 +366,7 @@
               </div>
               <span class="text-[10px] font-black text-slate-800 dark:text-white text-center leading-tight">ক্যাপচা</span>
               <span id="captcha-count" class="text-[9px] text-cyan-600 dark:text-cyan-400 font-bold">২০ টি</span>
+              <span id="captcha-card-sub" class="text-[9px] text-slate-400 font-bold">+১০ কয়েন প্রতিবার</span>
             </button>
           </div>
         </div>
@@ -390,7 +392,7 @@
               </div>
               <div class="min-w-0">
                 <div class="text-xs font-black text-slate-800 dark:text-white truncate">রেফারেল</div>
-                <div class="text-[10px] text-slate-500 dark:text-slate-400">+১২০০ কয়েন + ১০%</div>
+                <div id="home-refer-sub" class="text-[10px] text-slate-500 dark:text-slate-400">+১২০০ কয়েন + ১০%</div>
               </div>
             </button>
             <button onclick="switchTab('monthly_salary')" class="card-touch-feedback bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl p-3 flex items-center gap-3 text-left shadow-sm hover:border-amber-400/50 transition-all">
@@ -505,7 +507,7 @@
               </div>
               <span>আমার ডিজিটাল ওয়ালেট</span>
             </h3>
-            <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950 uppercase tracking-wider">১০০ কয়েন = ৳১.০০</span>
+            <span id="wallet-rate-badge" class="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-amber-400 text-slate-950 uppercase tracking-wider">১০০ কয়েন = ৳১.০০</span>
           </div>
           <p class="text-xs text-slate-300 mt-1.5">আপনার অর্জিত সমস্ত কয়েন নিরাপদে সংরক্ষিত এবং যেকোনো সময় বিকাশ, নগদ ও রিচার্জে উত্তোলনযোগ্য।</p>
         </div>
@@ -635,7 +637,7 @@
           <h3 class="text-base font-black flex items-center gap-1.5">
             <i data-lucide="wallet" class="w-5 h-5"></i> টাকা উত্তোলন (Withdraw)
           </h3>
-          <p class="text-xs text-emerald-100 mt-0.5">১০০ কয়েন = ৳১ টাকা। সর্বনিম্ন ৳১০০ ও ৫টি সফল রেফারেল প্রয়োজন।</p>
+          <p id="wdr-hero-sub" class="text-xs text-emerald-100 mt-0.5">১০০ কয়েন = ৳১ টাকা। সর্বনিম্ন ৳১০০ ও ৫টি সফল রেফারেল প্রয়োজন।</p>
         </div>
 
         <!-- Withdraw Eligibility Card -->
@@ -709,6 +711,15 @@
               <div class="text-[10px] text-slate-400 font-medium">লাইফটাইম কয়েন</div>
               <div id="prof-lifetime" class="text-xs font-black text-amber-500 font-mono mt-0.5">০</div>
             </div>
+          </div>
+
+          <div id="social-links-box" class="mt-3 grid grid-cols-2 gap-2">
+            <a id="btn-join-telegram" href="https://t.me/taskcashpro" target="_blank" rel="noopener" class="py-2.5 px-2 rounded-xl bg-sky-50 dark:bg-sky-950/40 border border-sky-200 dark:border-sky-800 text-sky-700 dark:text-sky-300 text-[11px] font-black flex items-center justify-center gap-1.5">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i> টেলিগ্রাম
+            </a>
+            <a id="btn-join-facebook" href="#" target="_blank" rel="noopener" class="hidden py-2.5 px-2 rounded-xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-[11px] font-black flex items-center justify-center gap-1.5">
+              <i data-lucide="share-2" class="w-3.5 h-3.5"></i> ফেসবুক
+            </a>
           </div>
         </div>
 
@@ -798,7 +809,7 @@
             <i data-lucide="users" class="w-6 h-6"></i>
           </div>
           <h3 class="text-base font-black">রেফারেল প্রোগ্রাম</h3>
-          <p class="text-xs text-purple-100 mt-1">প্রতি সফল রেফারে পান ১২০০ কয়েন বোনাস ও ১০% আজীবন কমিশন!</p>
+          <p id="refer-hero-sub" class="text-xs text-purple-100 mt-1">প্রতি সফল রেফারে পান ১২০০ কয়েন বোনাস ও ১০% আজীবন কমিশন!</p>
         </div>
 
         <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-3xl p-5 text-center space-y-4 shadow-xs">
@@ -1131,7 +1142,7 @@
             <i data-lucide="users" class="w-4 h-4"></i>
           </div>
           <div class="font-bold text-xs text-slate-800 dark:text-white mt-1">রেফারেল কোড</div>
-          <div class="text-[10px] text-purple-700 dark:text-purple-400 font-semibold">প্রতি রেফারে ২২ কয়েন</div>
+          <div id="svc-refer-sub" class="text-[10px] text-purple-700 dark:text-purple-400 font-semibold">প্রতি রেফারে ২২ কয়েন</div>
         </button>
 
         <!-- Deposit -->
@@ -1151,6 +1162,22 @@
           <div class="font-bold text-xs text-slate-800 dark:text-white mt-1">হেল্প ও সাপোর্ট</div>
           <div class="text-[10px] text-slate-500 font-semibold">২৪/৭ এডমিন সাপোর্ট</div>
         </button>
+
+        <a id="svc-join-telegram" href="https://t.me/taskcashpro" target="_blank" rel="noopener" class="p-3 rounded-2xl bg-sky-50 dark:bg-sky-950/30 border border-sky-200 dark:border-sky-800/40 hover:bg-sky-100 dark:hover:bg-sky-900/40 transition-all flex flex-col items-start gap-1 text-left active:scale-95">
+          <div class="w-8 h-8 rounded-xl bg-sky-600 text-white flex items-center justify-center">
+            <i data-lucide="send" class="w-4 h-4"></i>
+          </div>
+          <div class="font-bold text-xs text-slate-800 dark:text-white mt-1">টেলিগ্রাম চ্যানেল</div>
+          <div class="text-[10px] text-sky-700 dark:text-sky-400 font-semibold">অ্যাডমিন আপডেট জানুন</div>
+        </a>
+
+        <a id="svc-join-facebook" href="#" target="_blank" rel="noopener" class="hidden p-3 rounded-2xl bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800/40 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-all flex flex-col items-start gap-1 text-left active:scale-95">
+          <div class="w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+          </div>
+          <div class="font-bold text-xs text-slate-800 dark:text-white mt-1">ফেসবুক পেজ</div>
+          <div class="text-[10px] text-blue-700 dark:text-blue-400 font-semibold">পেজ ফলো করুন</div>
+        </a>
       </div>
     </div>
   </div>
@@ -1531,7 +1558,7 @@
       model: "google/gemini-2.0-flash-001"
     };
 
-  const firebaseConfig = {
+    const firebaseConfig = {
           apiKey: "AIzaSyAIe81hhzntDba-XNhF9vI7Cz1bcyJ0mwQ",
           authDomain: "mdjjd-6c072.firebaseapp.com",
           databaseURL: "https://mdjjd-6c072-default-rtdb.firebaseio.com",
@@ -1540,7 +1567,6 @@
           messagingSenderId: "886920355084",
           appId: "1:886920355084:web:de7f687d8564003c5cbd29"
         };
-
 
     let fbDatabase = null;
     let isFirebaseReady = false;
@@ -1573,6 +1599,69 @@
       const reqRef = getAdminConfig('requireRefForWithdraw', true);
       const minRefs = Number(getAdminConfig('minRefsForWithdraw', 5));
       MIN_REFS_FOR_WITHDRAW = reqRef ? (minRefs > 0 ? minRefs : 5) : 0;
+    }
+
+    function applySocialHref(id, url) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const link = (url || '').trim();
+      if (link) {
+        el.href = link;
+        el.classList.remove('hidden');
+      } else {
+        el.classList.add('hidden');
+      }
+    }
+
+    // Push every admin setting into visible user-app labels (no refresh needed)
+    function syncAdminDrivenLabels() {
+      syncEconomyFromAdmin();
+      const s = appData.appSettings || {};
+      const rate = COINS_PER_BDT;
+      const minW = MIN_WITHDRAW_BDT;
+      const reqRef = getAdminConfig('requireRefForWithdraw', true);
+      const minRefs = MIN_REFS_FOR_WITHDRAW;
+      const refBonus = Number(getAdminConfig('referralBonusCoins', 50));
+      const welcome = WELCOME_COINS;
+      const tg = (s.telegramUrl || '').trim();
+      const fb = (s.facebookUrl || '').trim();
+
+      const setTxt = (id, txt) => {
+        const el = document.getElementById(id);
+        if (el) el.innerText = txt;
+      };
+
+      setTxt('wallet-rate-badge', `${rate} কয়েন = ৳১.০০`);
+      setTxt('wdr-hero-sub', `${rate} কয়েন = ৳১ টাকা। সর্বনিম্ন ৳${minW}${reqRef ? ` ও ${minRefs}টি সফল রেফারেল প্রয়োজন` : ''}।`);
+      setTxt('home-refer-sub', `+${refBonus} কয়েন + ১০%`);
+      setTxt('refer-hero-sub', `প্রতি সফল রেফারে পান ${refBonus} কয়েন বোনাস ও ১০% আজীবন কমিশন!`);
+      setTxt('svc-refer-sub', `প্রতি রেফারে ${refBonus} কয়েন`);
+      setTxt('reg-welcome-label', `রেজিস্ট্রেশন করুন (ওয়েলকাম +${welcome})`);
+
+      const wdrInput = document.getElementById('wdr-amount');
+      if (wdrInput) {
+        wdrInput.min = String(minW);
+        if (document.activeElement !== wdrInput) {
+          const cur = Number(wdrInput.value);
+          if (!cur || cur < minW) wdrInput.value = minW;
+        }
+        if (typeof updateCoinsNeeded === 'function') updateCoinsNeeded(wdrInput.value);
+      }
+
+      applySocialHref('btn-join-telegram', tg || 'https://t.me/taskcashpro');
+      applySocialHref('svc-join-telegram', tg || 'https://t.me/taskcashpro');
+      applySocialHref('btn-join-facebook', fb);
+      applySocialHref('svc-join-facebook', fb);
+
+      const maintTg = document.getElementById('maint-tg-link');
+      if (maintTg) maintTg.href = tg || 'https://t.me/taskcashpro';
+
+      if (tg && DEFAULT_SYSTEM_TASKS && DEFAULT_SYSTEM_TASKS.task_tg_join) {
+        DEFAULT_SYSTEM_TASKS.task_tg_join.targetUrl = tg;
+      }
+      if (fb && DEFAULT_SYSTEM_TASKS && DEFAULT_SYSTEM_TASKS.task_fb_follow) {
+        DEFAULT_SYSTEM_TASKS.task_fb_follow.targetUrl = fb;
+      }
     }
 
     let appData = {
@@ -2344,11 +2433,14 @@
       } else if (q.includes('অ্যাড') || q.includes('বিজ্ঞাপন') || q.includes('এড') || q.includes('ad') || q.includes('কি করতে হবে') || q.includes('নিয়ম')) {
         reply = "💎 **বিজ্ঞাপনে সঠিক কাজের সাধারণ নিয়মাবলী (কয়েন নিশ্চিত করার উপায়):**\n\nআপনার প্রতিটি ভিজিট যাতে সিস্টেমে শতভাগ সফলভাবে অনুমোদিত হয় এবং কয়েন নিশ্চিতভাবে জমা হয়:\n\n১. 🌐 **পেজ লোড হতে দেওয়া:** পেজে প্রবেশের সাথে সাথে ব্যাক করবেন না। পেজটি পুরো লোড হতে ৫-১০ সেকেন্ড সময় দিন।\n২. 📜 **১৩-১৫ সেকেন্ড স্ক্রোল:** পেজটি ধীরে ধীরে উপর-নিচ স্ক্রোল করুন এবং ভেতরের তথ্যগুলো স্বাভাবিকভাবে দেখুন।\n৩. 👆 **ইন্টারনাল ক্লিক:** পেজের ভেতরের যেকোনো আর্টিকেল, বাটন বা মেনুতে স্বাভাবিকভাবে একবার ক্লিক করে ৩-৫ সেকেন্ড ব্রাউজ করুন।\n৪. 🎬 **ভিডিও পুরো দেখা:** কোনো ভিডিও থাকলে তা শেষ না হওয়া পর্যন্ত ব্যাক করবেন না।\n৫. 🛡️ **অ্যাকাউন্ট সুরক্ষা:** কোনো প্রকার VPN, অটো-ক্লিকার বা বট ব্যবহার সম্পূর্ণ নিষিদ্ধ। স্বাভাবিক ব্রাউজিং করলেই সাথে সাথে কয়েন জমা হয়ে যাবে।";
       } else if (q.includes('উইথড্র') || q.includes('টাকা') || q.includes('বিকাশ') || q.includes('নগদ') || q.includes('withdraw') || q.includes('পেমেন্ট')) {
-        reply = "💸 **টাকা উত্তোলন (Withdraw) পলিসি:**\n\n• কয়েন রেট: ২০০ কয়েন = ৳১ টাকা।\n• সর্বনিম্ন উত্তোলন: ৳২০০ (২০,০০০ কয়েন)।\n• শর্তাবলী: ন্যূনতম ৫টি সফল রেফারেল থাকতে হবে এবং নিয়ম মেনে নিয়মিত টাস্ক করতে হবে।\n• পেমেন্ট মেথড: বিকাশ, নগদ, রকেট এবং মোবাইল রিচার্জ।\n• প্রসেসিং সময়: উইথড্র আবেদন করার পর তথ্য যাচাই করে দ্রুত সময়ের মধ্যে বিকাশ/নগদে টাকা পাঠিয়ে দেওয়া হয়।";
+        syncEconomyFromAdmin();
+        const reqRefAi = getAdminConfig('requireRefForWithdraw', true);
+        reply = `💸 **টাকা উত্তোলন (Withdraw) পলিসি:**\n\n• কয়েন রেট: ${COINS_PER_BDT} কয়েন = ৳১ টাকা।\n• সর্বনিম্ন উত্তোলন: ৳${MIN_WITHDRAW_BDT} (${(MIN_WITHDRAW_BDT * COINS_PER_BDT).toLocaleString()} কয়েন)।\n• শর্তাবলী: ${reqRefAi ? `ন্যূনতম ${MIN_REFS_FOR_WITHDRAW}টি সফল রেফারেল থাকতে হবে এবং নিয়ম মেনে নিয়মিত টাস্ক করতে হবে।` : 'রেফারেল ছাড়াই উত্তোলন করা যাবে।'}\n• পেমেন্ট মেথড: বিকাশ, নগদ, রকেট এবং মোবাইল রিচার্জ।\n• প্রসেসিং সময়: উইথড্র আবেদন করার পর তথ্য যাচাই করে দ্রুত সময়ের মধ্যে বিকাশ/নগদে টাকা পাঠিয়ে দেওয়া হয়।`;
       } else if (q.includes('ব্যান') || q.includes('ban') || q.includes('ভিপিএন') || q.includes('vpn') || q.includes('invalid') || q.includes('সুরক্ষা')) {
         reply = "🚫 **একাউন্ট ব্যান ও ইনভ্যালিড ক্লিক থেকে সুরক্ষার উপায়:**\n\n১. 🛡️ **ভিপিএন সম্পূর্ণ নিষিদ্ধ:** কোনো প্রকার VPN বা প্রক্সি ব্যবহার করবেন না। ভিপিএন ডিটেক্ট হলে একাউন্ট বাতিল হতে পারে।\n২. 📱 **স্বাভাবিক ব্রাউজিং:** পেজে গিয়ে সাথে সাথে বের না হয়ে অন্তত ১৩-১৫ সেকেন্ড স্ক্রোল করুন।\n৩. 👤 **এক ডিভাইসে এক একাউন্ট:** একাধিক একাউন্ট বা ক্লোন অ্যাপ ব্যবহার করা যাবে না।\n৪. 🤖 **অটো-ক্লিকার নিষিদ্ধ:** কোনো বট বা অটোমেশন স্ক্রিপ্ট ব্যবহার করা সম্পূর্ণ নিষিদ্ধ।";
       } else if (q.includes('রেফার') || q.includes('কমিশন') || q.includes('স্যালারি') || q.includes('বেতন') || q.includes('refer')) {
-        reply = "👥 **রেফারেল ও মাসিক ফিক্সড স্যালারি প্রোগ্রাম:**\n\n• 🎁 **রেফারেল বোনাস:** প্রতি সফল রেফারে সাথে সাথে +১২০০ কয়েন বোনাস।\n• 💰 **১০% লাইফটাইম কমিশন:** আপনার রেফার করা সদস্যরা যত টাস্ক সম্পন্ন করবে, তাদের আয়ের ১০% আজীবন আপনার একাউন্টে জমা হবে।\n• 🏆 **মাসিক ফিক্সড স্যালারি (প্রতি মাসের ১ তারিখে পেমেন্ট):**\n  - ব্রোঞ্জ টায়ার (৩০ রেফারেল): ৳৫০০ মাসিক বেতন\n  - সিলভার টায়ার (৭৫ রেফারেল): ৳১,২০০ মাসিক বেতন\n  - গোল্ড টায়ার (২০০ রেফারেল): ৳৩,০০০ মাসিক বেতন";
+        const refB = Number(getAdminConfig('referralBonusCoins', 50));
+        reply = `👥 **রেফারেল ও মাসিক ফিক্সড স্যালারি প্রোগ্রাম:**\n\n• 🎁 **রেফারেল বোনাস:** প্রতি সফল রেফারে সাথে সাথে +${refB} কয়েন বোনাস।\n• 💰 **১০% লাইফটাইম কমিশন:** আপনার রেফার করা সদস্যরা যত টাস্ক সম্পন্ন করবে, তাদের আয়ের ১০% আজীবন আপনার একাউন্টে জমা হবে।\n• 🏆 **মাসিক ফিক্সড স্যালারি (প্রতি মাসের ১ তারিখে পেমেন্ট):**\n  - ব্রোঞ্জ টায়ার (৩০ রেফারেল): ৳৫০০ মাসিক বেতন\n  - সিলভার টায়ার (৭৫ রেফারেল): ৳১,২০০ মাসিক বেতন\n  - গোল্ড টায়ার (২০০ রেফারেল): ৳৩,০০০ মাসিক বেতন`;
       } else {
         reply = `ধন্যবাদ আপনার প্রশ্নের জন্য! Task Cash Pro অ্যাপে নিয়ম মেনে প্রতিটি কাজ সম্পন্ন করলে এবং পেজে ১৩-১৫ সেকেন্ড স্বাভাবিক স্ক্রোল করে সময় কাটালে আপনার সব কয়েন নিরাপদে অ্যাকাউন্টে জমা হবে। নির্দিষ্ট কোনো বাটন (যেমন: Unlock Extra, Watch Ad, বোনাস এড, স্পিন, স্ক্র্যাচ) সম্পর্কে জানতে আমাকে জিজ্ঞাসা করুন!`;
       }
@@ -2362,7 +2454,7 @@ STRICT PRIVACY & CONFIDENTIALITY RULES (CRITICAL):
 1. NEVER mention any ad network names under any circumstances (FORBIDDEN words: Monetag, AdsGram, Adsterra, PopAds, HilltopAds, Google, AdSense, etc.).
 2. NEVER mention admin revenue, profit margins, eCPM, publisher earnings, or backend business monetization.
 3. ALWAYS speak 100% from the USER'S perspective: politely guide the user how to visit pages naturally (wait 5-10s for page to fully load, scroll smoothly for 13-15 seconds, click an internal link/article to browse for 3-5 seconds, watch videos completely, never use VPNs or auto-clickers) so that the user's task visit is successfully verified and coins are credited smoothly.
-4. Button coin values: Unlock Extra (+42 coins), Watch Ad (+28 coins), Bonus Ad (+25 coins), Scratch Card (+22 coins), Lucky Spin (~22 coins average), Instant Bonus (+20 coins), Video Ad (+18 coins), Math Quiz (+15 coins), Captcha (+10 coins), Daily Bonus (+12 coins), Welcome Bonus (+25 coins), Referral Bonus (+22 coins). 100 coins = 1 BDT.
+4. Button coin values: Unlock Extra (+${Number(getAdminConfig('rewardUnlockExtra', 42))} coins), Watch Ad (+${Number(getAdminConfig('rewardWatchAd', 28))} coins), Bonus Ad (+${Number(getAdminConfig('rewardThreeAds', 25))} coins), Scratch Card (+${Number(getAdminConfig('rewardScratch', 22))} coins), Lucky Spin (~22 coins average), Instant Bonus (+${Number(getAdminConfig('rewardInstant', 20))} coins), Video Ad (+${Number(getAdminConfig('rewardAdsgram', 18))} coins), Math Quiz (+${Number(getAdminConfig('rewardQuiz', 15))} coins), Captcha (+${Number(getAdminConfig('rewardCaptcha', 10))} coins), Daily Bonus (+${Number(getAdminConfig('dailyCheckinBonusCoins', 12))} coins), Welcome Bonus (+${WELCOME_COINS} coins), Referral Bonus (+${Number(getAdminConfig('referralBonusCoins', 50))} coins). ${COINS_PER_BDT} coins = 1 BDT. Min withdraw ৳${MIN_WITHDRAW_BDT}.
 5. Answer concisely, cleanly, warmly and step-by-step in natural Bengali.`;
 
           const res = await fetch(endpoint, {
@@ -2518,6 +2610,9 @@ STRICT PRIVACY & CONFIDENTIALITY RULES (CRITICAL):
 
     function renderUserHeader() {
       const u = appData.user;
+      if (typeof syncAdminDrivenLabels === 'function') {
+        syncAdminDrivenLabels();
+      }
       const refCode = u.referralCode || (u.phone ? 'TC' + u.phone.slice(-4) : 'TC7701');
       u.referralCode = refCode;
 
@@ -3946,10 +4041,7 @@ STRICT PRIVACY & CONFIDENTIALITY RULES (CRITICAL):
         appData.tasks = snap.val() || {};
         renderTaskList();
       });
-      fbDatabase.ref('appSettings').on('value', snap => {
-        const s = snap.val() || {};
-        applyAdminAppSettings(s);
-      });
+      bindAppSettingsListener();
 
       // Real-time Broadcast Notifications from Admin Panel
       fbDatabase.ref('notifications/broadcast').limitToLast(8).on('child_added', (snap) => {
@@ -3964,6 +4056,16 @@ STRICT PRIVACY & CONFIDENTIALITY RULES (CRITICAL):
         if (typeof safeConfetti === 'function') {
           safeConfetti({ particleCount: 35, spread: 55 });
         }
+      });
+    }
+
+    let appSettingsBound = false;
+    function bindAppSettingsListener() {
+      if (appSettingsBound || !isFirebaseReady || !fbDatabase) return;
+      appSettingsBound = true;
+      fbDatabase.ref('appSettings').on('value', snap => {
+        const s = snap.val() || {};
+        applyAdminAppSettings(s);
       });
     }
 
@@ -4045,8 +4147,14 @@ STRICT PRIVACY & CONFIDENTIALITY RULES (CRITICAL):
       }
 
       // 6. Force full UI refresh so coin rate, rewards, limits, badges update instantly
+      if (typeof syncAdminDrivenLabels === 'function') {
+        syncAdminDrivenLabels();
+      }
       if (typeof renderUserHeader === 'function') {
         renderUserHeader();
+      }
+      if (typeof renderTaskList === 'function') {
+        renderTaskList();
       }
     }
 
@@ -4259,6 +4367,7 @@ STRICT PRIVACY & CONFIDENTIALITY RULES (CRITICAL):
       lucide.createIcons();
       refreshStickyBanner();
       initIdleRetentionTimer();
+      bindAppSettingsListener();
 
       // Check URL query parameters for referral link (?ref=TCXXXX)
       const urlParams = new URLSearchParams(window.location.search);
